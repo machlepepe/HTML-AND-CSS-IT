@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:700);
+
+body {
+  background-color: #ff4b3b;
+}
+
+.container {
+  perspective: 1000px; /* Viewing distance */
+  perspective-origin: 50% 100px; /* x, y viewing angle */
+}
+
+
+.logo {
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  left: 50px;
+  position: absolute;
+  display: block;
+  background-image: url(http://devinkoncar.com/images/misc/rams.png) !important;
+  background-size: 100px 100px !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  transform: rotateY(0deg) translateZ(0px);
+}
+.axis {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d; /* Makes sides 3D-able as seen in the "translateX, Y or Z below */
+}
+
+.axis > div {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+}
+
+.front{
+  transform: rotateY(0deg) translateZ(100px);
+}
+.back{
+  transform: rotateY(180deg) translateZ(100px);
+}
+
+.right{
+  transform: rotateY(90deg) translateZ(100px);
+}
+.left{
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.top{
+  transform: rotateX(-90deg) translateZ(-100px);
+}
+.bottom{
+  transform: rotateX(90deg) translateZ(-100px);
+}
+
+
+
+
+/* ANIMATION */
+@keyframes spin {
+	from { transform: rotateY(0); }
+	to { transform: rotateY(360deg); }
+}
+.axis { animation: spin 10s infinite linear; }
+.axis > div {
+  transition-delay: 0.5s;
+	transition-duration: 5s;
+}
+.axis:hover > div {
+  transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
+}
+
+.axis span {
+  transition: all 2s linear;
+}
+
+.axis:hover > div > span {
+  display: none !important;
+}
+
+/* GENERAL STYLING */
+/* *, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; } */
+
+.axis { margin: 50px auto; }
+.axis > div {
+  background: rgba(244, 236, 236, 0.728);
+  box-shadow: inset 0 0 50px rgba(255,255,255,0.3);
+  font-size: 20px;
+  text-align: center;
+  line-height: 200px;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Titillium Web';
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.3);
+}
